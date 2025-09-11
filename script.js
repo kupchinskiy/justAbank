@@ -10,8 +10,7 @@ const btnsOpenModalWindow = document.querySelectorAll(
   '.btn--show-modal-window'
 );
 
-const openModalWindow = function (e) {
-  e.prevenDefault();
+const openModalWindow = function () {
   modalWindow.classList.remove('hidden');
   overlay.classList.remove('hidden');
 };
@@ -21,12 +20,8 @@ const closeModalWindow = function () {
   overlay.classList.add('hidden');
 };
 
-btnsOpenModalWindow.forEach(button =>
-  button.addEventListener('click', openModalWindow)
-);
-
-// for (let i = 0; i < btnsOpenModalWindow.length; i++)
-//   btnsOpenModalWindow[i].addEventListener('click', openModalWindow);
+for (let i = 0; i < btnsOpenModalWindow.length; i++)
+  btnsOpenModalWindow[i].addEventListener('click', openModalWindow);
 
 btnCloseModalWindow.addEventListener('click', closeModalWindow);
 overlay.addEventListener('click', closeModalWindow);

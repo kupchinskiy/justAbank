@@ -65,3 +65,31 @@ btnScrollTo.addEventListener('click', function (e) {
 
   section1.scrollIntoView({ behavior: 'smooth' });
 });
+
+const tabs = document.querySelectorAll('.operations__tab');
+console.log(tabs);
+const tabConteiner = document.querySelector('.operations__tab-container');
+// console.log(tabConteiner);
+const tabContens = document.querySelectorAll('.operations__content');
+// console.log(tabContens);
+
+tabConteiner.addEventListener('click', function (e) {
+  // const clickButton = e.target.parentElement;
+  const clickButton = e.target.closest('.operations__tab');
+  // console.log(clickButton);
+  // Guard clause - пункт охраны
+  if (!clickButton) return;
+
+  // Активная вкладка
+  tabs.forEach(tab => tab.classList.remove('operations__tab--active'));
+  clickButton.classList.add('operations__tab--active');
+
+  // Активный контент
+  tabContens.forEach(content =>
+    content.classList.remove('operations__content--active')
+  );
+
+  document
+    .querySelector(`.operations__content--${clickButton.dataset.tab}`)
+    .classList.add('operations__content--active');
+});
